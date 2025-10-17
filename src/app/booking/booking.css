@@ -1,0 +1,473 @@
+/* Booking Page Styles */
+
+.booking-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 20px;
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Header */
+.booking-header {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f0f0f0;
+  border-radius: 50%;
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.booking-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.studio-name {
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Progress Tracker */
+.progress-tracker {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+
+.progress-line {
+  position: absolute;
+  top: 48px;
+  left: 36px;
+  right: 36px;
+  height: 2.46px;
+  background: #ffd4e5;
+  z-index: 1;
+}
+
+.progress-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #ff69b4;
+  z-index: 2;
+  transition: width 0.3s ease;
+}
+
+.progress-line.step-1::after {
+  width: 0%;
+}
+
+.progress-line.step-2::after {
+  width: 50%;
+}
+
+.progress-line.step-3::after {
+  width: 100%;
+}
+
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #ffd4e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-circle.active {
+  background: #ff69b4;
+  border-color: #ff69b4;
+}
+
+.step-text {
+  font-size: 12px;
+  color: #1a1a1a;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* Section */
+.section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+}
+
+/* Technician Grid */
+.technician-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  grid-template-rows: repeat(2, auto);
+}
+
+.technician-card:nth-child(4) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.technician-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px;
+  background: white;
+  border: 1px solid #000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.technician-card:hover {
+  border-color: #ff69b4;
+}
+
+.technician-card.selected {
+  background: #ffd4e5;
+  border-color: #ff69b4;
+}
+
+.technician-avatar {
+  width: 50px;
+  height: 50px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.technician-name {
+  font-size: 14px;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+
+/* Time Grid */
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.time-slot {
+  padding: 12px 16px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.time-slot:hover {
+  border-color: #ff69b4;
+}
+
+.time-slot.selected {
+  background: #ffd4e5;
+  border-color: #ff69b4;
+  color: #ff69b4;
+}
+
+/* Date Input */
+.date-input-container {
+  width: 100%;
+}
+
+.date-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.date-input:hover {
+  border-color: #ff69b4;
+}
+
+.calendar-icon {
+  font-size: 18px;
+  color: #666;
+}
+
+.date-placeholder {
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+/* Next Button */
+.next-button-container {
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+.next-button {
+  width: 100%;
+  padding: 16px;
+  background: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.next-button:hover {
+  background: #ff1493;
+  transform: translateY(-2px);
+}
+
+.next-button:active {
+  transform: translateY(0);
+}
+
+.next-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Calendar Modal */
+.calendar-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.calendar-popup {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 350px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.calendar-nav {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.calendar-month {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.calendar-weekdays span {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.calendar-day {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  font-size: 14px;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-day:hover {
+  background: #f0f0f0;
+}
+
+.calendar-day.selected {
+  background: #ff69b4;
+  color: white;
+}
+
+.calendar-day.empty {
+  cursor: default;
+  visibility: hidden;
+}
+
+.calendar-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.calendar-cancel,
+.calendar-confirm {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calendar-cancel {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.calendar-cancel:hover {
+  background: #e0e0e0;
+}
+
+.calendar-confirm {
+  background: #ff69b4;
+  color: white;
+}
+
+.calendar-confirm:hover {
+  background: #ff1493;
+}
+
+/* Mobile adjustments */
+@media (max-width: 375px) {
+  .booking-page {
+    padding: 16px;
+  }
+  
+  .booking-title {
+    font-size: 20px;
+  }
+  
+  .studio-name {
+    font-size: 14px;
+  }
+  
+  .progress-tracker {
+    padding: 0 10px;
+  }
+  
+  .step-text {
+    font-size: 10px;
+  }
+  
+  .section-title {
+    font-size: 16px;
+  }
+  
+  .technician-grid {
+    gap: 8px;
+  }
+  
+  .technician-card {
+    padding: 12px;
+  }
+  
+  .time-grid {
+    gap: 8px;
+  }
+  
+  .time-slot {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  
+  .calendar-popup {
+    width: 95%;
+    padding: 16px;
+  }
+}
