@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จองคิวทำเล็บ - PrettyQueue Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Booking Page Styles */
+        .booking-page {
+            min-height: 100vh;
+            background: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .app-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .app-url {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .step-indicator {
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .main-content {
+            padding: 30px 20px;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .studio-name {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 8px;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .progress-circle.active {
+            background: #e91e63;
+            color: white;
+        }
+
+        .progress-circle.inactive {
+            background: white;
+            border: 2px solid #e91e63;
+            color: #e91e63;
+        }
+
+        .progress-line {
+            width: 40px;
+            height: 2px;
+            background: #e91e63;
+        }
+
+        .progress-label {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+        }
+
+        .technician-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .technician-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .technician-card.selected {
+            background: #ffd4e5;
+            border-color: #ff69b4;
+        }
+
+        .technician-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff69b4 0%, #ffd700 100%);
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .technician-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .time-slot {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .time-slot.selected {
+            background: #ffd4e5;
+            border-color: #ff69b4;
+            color: #1a1a1a;
+        }
+
+        .date-input {
+            position: relative;
+        }
+
+        .date-field {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-bottom: 2px solid #e0e0e0;
+            background: transparent;
+            font-size: 16px;
+            color: #1a1a1a;
+            outline: none;
+        }
+
+        .date-field:focus {
+            border-bottom-color: #ff69b4;
+        }
+
+        .date-icon {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 18px;
+        }
+
+        .next-btn {
+            width: 100%;
+            background: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .next-btn:hover {
+            background: #e91e63;
+        }
+
+        .next-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .page-title {
+                font-size: 24px;
+            }
+
+            .technician-grid {
+                gap: 10px;
+            }
+
+            .time-grid {
+                gap: 10px;
+            }
+
+            .technician-card {
+                padding: 12px;
+            }
+
+            .technician-avatar {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-page">
+        <!-- Header -->
+        <div class="booking-header">
+            <div class="app-info">
+                <div class="app-name">Betask Linked</div>
+                <div class="app-url">betask-lind.web.app</div>
+            </div>
+            <div class="header-actions">
+                <div class="step-indicator">1</div>
+                <button class="close-btn" onclick="goBack()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Title -->
+            <h1 class="page-title">จองคิวทำเล็บ</h1>
+            <div class="studio-name">PrettyQueue Studio</div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="progress-step">
+                    <div class="progress-circle active">1</div>
+                    <div class="progress-label">เลือกวัน / เวลา</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <div class="progress-circle inactive">2</div>
+                    <div class="progress-label">ประวัติส่วนตัว</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <div class="progress-circle inactive">3</div>
+                    <div class="progress-label">ชำระเงิน</div>
+                </div>
+            </div>
+
+            <!-- Select Technician -->
+            <div class="section">
+                <h2 class="section-title">เลือกช่าง</h2>
+                <div class="technician-grid">
+                    <div class="technician-card" onclick="selectTechnician(this, 'ธีรดา')">
+                        <div class="technician-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="technician-name">ธีรดา</div>
+                    </div>
+                    <div class="technician-card" onclick="selectTechnician(this, 'ธีรดา')">
+                        <div class="technician-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="technician-name">ธีรดา</div>
+                    </div>
+                    <div class="technician-card" onclick="selectTechnician(this, 'ธีรดา')">
+                        <div class="technician-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="technician-name">ธีรดา</div>
+                    </div>
+                    <div class="technician-card" onclick="selectTechnician(this, 'ธีรดา')">
+                        <div class="technician-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="technician-name">ธีรดา</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Time -->
+            <div class="section">
+                <h2 class="section-title">เลือกเวลา</h2>
+                <div class="time-grid">
+                    <div class="time-slot selected" onclick="selectTime(this, '10:00')">10:00</div>
+                    <div class="time-slot" onclick="selectTime(this, '11:00')">11:00</div>
+                    <div class="time-slot" onclick="selectTime(this, '12:00')">12:00</div>
+                    <div class="time-slot" onclick="selectTime(this, '13:00')">13:00</div>
+                    <div class="time-slot" onclick="selectTime(this, '14:00')">14:00</div>
+                    <div class="time-slot" onclick="selectTime(this, '15:00')">15:00</div>
+                    <div class="time-slot" onclick="selectTime(this, '16:00')">16:00</div>
+                    <div class="time-slot" onclick="selectTime(this, '17:00')">17:00</div>
+                    <div class="time-slot" onclick="selectTime(this, '18:00')">18:00</div>
+                </div>
+            </div>
+
+            <!-- Select Date -->
+            <div class="section">
+                <h2 class="section-title">เลือกวันที่</h2>
+                <div class="date-input">
+                    <i class="fas fa-calendar-alt date-icon"></i>
+                    <input type="date" class="date-field" placeholder="วันที่">
+                </div>
+            </div>
+
+            <!-- Next Button -->
+            <button class="next-btn" onclick="goToNextStep()">
+                ต่อไป
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let selectedTechnician = null;
+        let selectedTime = '10:00';
+        let selectedDate = null;
+
+        function goBack() {
+            // Go back to main page
+            window.location.href = 'index.html';
+        }
+
+        function selectTechnician(element, name) {
+            // Remove previous selection
+            document.querySelectorAll('.technician-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selection to clicked card
+            element.classList.add('selected');
+            selectedTechnician = name;
+            
+            showNotification(`เลือกช่าง: ${name}`, 'success');
+        }
+
+        function selectTime(element, time) {
+            // Remove previous selection
+            document.querySelectorAll('.time-slot').forEach(slot => {
+                slot.classList.remove('selected');
+            });
+            
+            // Add selection to clicked slot
+            element.classList.add('selected');
+            selectedTime = time;
+            
+            showNotification(`เลือกเวลา: ${time}`, 'success');
+        }
+
+        function goToNextStep() {
+            if (!selectedTechnician) {
+                showNotification('กรุณาเลือกช่าง', 'warning');
+                return;
+            }
+            
+            if (!selectedTime) {
+                showNotification('กรุณาเลือกเวลา', 'warning');
+                return;
+            }
+
+            const dateInput = document.querySelector('.date-field');
+            if (!dateInput.value) {
+                showNotification('กรุณาเลือกวันที่', 'warning');
+                return;
+            }
+
+            showNotification('กำลังไปขั้นตอนถัดไป...', 'info');
+            
+            // Here you can navigate to the next step
+            setTimeout(() => {
+                showNotification('ขั้นตอนถัดไป: ประวัติส่วนตัว', 'info');
+            }, 1000);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const existingNotifications = document.querySelectorAll('.notification-toast');
+            existingNotifications.forEach(notification => notification.remove());
+            
+            const notification = document.createElement('div');
+            notification.className = `notification-toast notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-${getNotificationIcon(type)}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${getNotificationColor(type)};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                max-width: 300px;
+                animation: slideInRight 0.3s ease-out;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.animation = 'slideOutRight 0.3s ease-out';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 3000);
+        }
+
+        function getNotificationIcon(type) {
+            const icons = {
+                'success': 'check-circle',
+                'error': 'exclamation-circle',
+                'warning': 'exclamation-triangle',
+                'info': 'info-circle'
+            };
+            return icons[type] || 'info-circle';
+        }
+
+        function getNotificationColor(type) {
+            const colors = {
+                'success': '#10b981',
+                'error': '#ef4444',
+                'warning': '#f59e0b',
+                'info': '#3b82f6'
+            };
+            return colors[type] || '#3b82f6';
+        }
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Set default date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.querySelector('.date-field').value = today;
+        });
+    </script>
+</body>
+</html>
