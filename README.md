@@ -2,10 +2,10 @@
 
 เว็บแอปพลิเคชันสำหรับสตูดิโอทำเล็บ PrettyQueue Studio ที่พัฒนาด้วย Next.js, TypeScript, และ Tailwind CSS
 
-## ✨ Features
+##  Features
 
 -  **Modern UI/UX**: ออกแบบด้วย Tailwind CSS และ FontAwesome icons
--  **Responsive Design**: รองรับทุกขนาดหน้าจอ
+-  **Responsive Design**: รองรับการใช้งานใน Line
 -  **Notification System**: ระบบแจ้งเตือนแบบ real-time
 -  **Service Selection**: เลือกบริการทำเล็บและต่อขนตา
 -  **Booking System**: ระบบจองคิวแบบ step-by-step
