@@ -1,0 +1,186 @@
+/* Dashboard Page Styles */
+.dashboard-page {
+  min-height: 100vh;
+  background: #ffffff;
+  font-family: 'Kanit', sans-serif;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  font-family: 'Kanit', sans-serif;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  background: #000000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+}
+
+.content-container {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.main-heading {
+  font-size: 28px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 3rem 0;
+  font-family: 'Kanit', sans-serif;
+  text-align: left;
+}
+
+/* Add Business Section */
+.add-business-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.add-business-box {
+  width: 200px;
+  height: 200px;
+  border: 2px dashed #000000;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #ffffff;
+}
+
+.add-business-box:hover {
+  background: #f8f8f8;
+  border-color: #333333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.plus-icon {
+  font-size: 48px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1;
+}
+
+.add-business-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+  font-family: 'Kanit', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+  
+  .app-title {
+    font-size: 20px;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .main-heading {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .add-business-box {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .plus-icon {
+    font-size: 36px;
+  }
+  
+  .add-business-text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.75rem;
+  }
+  
+  .app-title {
+    font-size: 18px;
+  }
+  
+  .profile-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  
+  .main-heading {
+    font-size: 20px;
+    margin-bottom: 2rem;
+  }
+  
+  .add-business-box {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .plus-icon {
+    font-size: 28px;
+  }
+  
+  .add-business-text {
+    font-size: 14px;
+  }
+}

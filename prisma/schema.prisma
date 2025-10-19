@@ -1,0 +1,134 @@
+// Prisma Schema for PrettyQueue Backoffice
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// User Model for Authentication
+model User {
+  id            String    @id @default(uuid())
+  email         String?   @unique
+  name          String?
+  image         String?
+  provider      String?   // 'line', 'facebook', 'email'
+  providerId    String?
+  password      String?   // For email login
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  businesses    Business[]
+  
+  @@unique([provider, providerId])
+}
+
+// Business Model
+model Business {
+  id              String    @id @default(uuid())
+  name            String
+  description     String?
+  profileImage    String?
+  coverImage      String?
+  shopColor       String    @default("#FF0FE3")
+  currency        String    @default("THB")
+  website         String?
+  lineOA          String?
+  contactImage    String?
+  address         String?
+  maxAdvanceDays  Int       @default(30)
+  maxAdvanceHours Int       @default(0)
+  maxAdvanceMinutes Int     @default(0)
+  allowCancellation Boolean @default(true)
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  services        Service[]
+  bankAccounts    BankAccount[]
+  transferInfo    TransferInfo?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// Service Model
+model Service {
+  id              String    @id @default(uuid())
+  name            String
+  description     String?
+  image           String?
+  price           Float
+  discountedPrice Float?
+  isActive        Boolean   @default(true)
+  businessId      String
+  business        Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  subServices     SubService[]
+  operatingHours  OperatingHours[]
+  bookingSettings BookingSettings?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// Sub Service Model
+model SubService {
+  id              String    @id @default(uuid())
+  name            String
+  description     String?
+  image           String?
+  price           Float
+  discountedPrice Float?
+  serviceId       String
+  service         Service   @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// Operating Hours Model
+model OperatingHours {
+  id              String    @id @default(uuid())
+  dayOfWeek       String    // 'monday', 'tuesday', etc.
+  startTime       String
+  endTime         String
+  maxBookings     Int       @default(1)
+  serviceId       String
+  service         Service   @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// Booking Settings Model
+model BookingSettings {
+  id              String    @id @default(uuid())
+  price           Float
+  discountedPrice Float?
+  availableDays   String    // JSON array of days ['monday', 'tuesday', ...]
+  timeSlots       String    // JSON array of time slots
+  serviceId       String    @unique
+  service         Service   @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// Bank Account Model
+model BankAccount {
+  id              String    @id @default(uuid())
+  accountName     String
+  bankName        String
+  accountNumber   String
+  businessId      String
+  business        Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// Transfer Info Model
+model TransferInfo {
+  id              String    @id @default(uuid())
+  image           String?
+  message         String?
+  businessId      String    @unique
+  business        Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+

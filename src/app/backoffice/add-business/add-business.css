@@ -1,0 +1,385 @@
+/* Add Business Page Styles */
+.add-business-page {
+  min-height: 100vh;
+  background: #f0f0f0;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #f0f0f0;
+  border-bottom: none;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.home-link {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+  text-decoration: none;
+  font-family: 'Kanit', sans-serif;
+}
+
+.home-link:hover {
+  color: #333333;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  background: #000000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.content-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.content-header {
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 0.5rem 0;
+  font-family: 'Kanit', sans-serif;
+}
+
+.page-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+  font-family: 'Kanit', sans-serif;
+}
+
+/* Form Styles */
+.business-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Image Upload Section */
+.image-upload-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.image-upload-box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #f8f8f8;
+}
+
+.image-upload-box:hover {
+  border-color: #ff6b9d;
+  background: #fff5f8;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.camera-icon {
+  font-size: 48px;
+  color: #ff0fe3;
+}
+
+.file-input {
+  display: none;
+}
+
+.upload-label {
+  font-size: 14px;
+  color: #666666;
+  cursor: pointer;
+  font-family: 'Kanit', sans-serif;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Input Groups */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  font-family: 'Kanit', sans-serif;
+}
+
+.text-input {
+  padding: 0.75rem;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: 'Kanit', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #ff6b9d;
+}
+
+/* Dropdown Styles */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: 'Kanit', sans-serif;
+  background: #ffffff;
+  cursor: pointer;
+  appearance: none;
+  transition: border-color 0.3s ease;
+}
+
+.dropdown-select:focus {
+  outline: none;
+  border-color: #ff6b9d;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #666666;
+  font-size: 12px;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.cancel-button {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #ff0fe3;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #ff0fe3;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Kanit', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancel-button:hover {
+  background: #fff5f8;
+}
+
+.confirm-button {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #ff0fe3;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Kanit', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.confirm-button:hover:not(:disabled) {
+  background: #ff5a8a;
+}
+
+.confirm-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.footer {
+  background: #ff0fe3;
+  padding: 1rem 2rem;
+  text-align: left;
+}
+
+.copyright {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  font-family: 'Kanit', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .content-box {
+    padding: 1.5rem;
+  }
+  
+  .page-title {
+    font-size: 20px;
+  }
+  
+  .page-subtitle {
+    font-size: 14px;
+  }
+  
+  .image-upload-box {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .camera-icon {
+    font-size: 36px;
+  }
+  
+  .action-buttons {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  
+  .cancel-button,
+  .confirm-button {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.75rem;
+  }
+  
+  .home-link {
+    font-size: 16px;
+  }
+  
+  .profile-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  
+  .content-box {
+    padding: 1rem;
+  }
+  
+  .page-title {
+    font-size: 18px;
+  }
+  
+  .page-subtitle {
+    font-size: 12px;
+  }
+  
+  .image-upload-box {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .camera-icon {
+    font-size: 28px;
+  }
+  
+  .input-label {
+    font-size: 14px;
+  }
+  
+  .text-input,
+  .dropdown-select {
+    font-size: 14px;
+    padding: 0.5rem;
+  }
+  
+  .action-buttons {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  
+  .cancel-button,
+  .confirm-button {
+    flex: 1;
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+  }
+}
